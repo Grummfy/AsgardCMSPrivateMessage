@@ -1,0 +1,43 @@
+{
+    "name": "Grummfy/acms-privatemessage",
+    "description": "Private Messaging for asgard CMS",
+    "type": "asgard-module",
+    "require": {
+        "php": ">=5.4",
+        "composer/installers": "~1.0",
+        "asgardcms/core-module": "dev-master",
+        "grummfy/web-interface": "~0.0"
+    },
+    "require-dev": {
+        "atoum/atoum": "~2.1"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\PrivateMessage\\": ".",
+            "Modules\\": "Modules/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.cartalyst.com"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/nWidart/modules"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [
+        {
+            "name": "Grummfy",
+            "email": "grummfy@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modules\\PrivateMessage\\": ""
+        }
+    }
+}

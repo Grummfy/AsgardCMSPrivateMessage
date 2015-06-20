@@ -1,0 +1,17 @@
+{
+    "name": "PrivateMessage",
+    "alias": "privatemessage",
+    "description": "",
+    "keywords": [],
+    "version": "v0.0.1",
+    "active": 1,
+    "order": 0,
+    "providers": [
+        "Modules\\PrivateMessage\\Providers\\PrivateMessageServiceProvider",
+        "Modules\\PrivateMessage\\Providers\\RouteServiceProvider"
+    ],
+    "aliases":{},
+    "files": [
+        "composers.php"
+    ]
+}
