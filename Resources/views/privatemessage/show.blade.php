@@ -8,7 +8,10 @@
     <div class="row">
         <div class="col-lg-12">
             <span class="linkBack">
-                <a href="{{ URL::route('privatemessage') }}"><i class="glyphicon glyphicon-chevron-left"></i> {{{ \Lang::get('privatemessage::view.show.back-to-list') }}}</a>
+                <a href="{{ URL::route($currentLocale . '.privatemessage') }}">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                    {{{ \Lang::get('privatemessage::view.show.back-to-list') }}}
+                </a>
             </span>
             <h1>{{ $thread->title }}</h1>
             @foreach($messages as $message)

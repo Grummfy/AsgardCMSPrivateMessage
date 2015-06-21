@@ -17,6 +17,7 @@ class EloquentThreadRepository extends EloquentBaseRepository implements ThreadR
 			{
 				$q->where('receiver_id', $userId);
 			})
+			/// todo this smells bad, change to something better
 			->orWhereHas('receiversGroup.users', function($q) use ($userId)
 			{
 				$q->where('user_id', $userId);

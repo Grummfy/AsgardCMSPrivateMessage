@@ -32,7 +32,7 @@ class PublicController extends BasePublicController
 		$userId = $this->auth->id();
 		$threads = $this->_thread->listForUser($userId, $inbox);
 
-		return view('privatemessage.index', compact('threads'));
+		return view('privatemessage::pm.index', compact('threads'));
 	}
 
 	public function show($threadId)
@@ -41,6 +41,47 @@ class PublicController extends BasePublicController
 		$thread = $this->_thread->find($threadId);
 		$messages = $this->_message->findForUser($userId, $threadId);
 
-		return view('privatemessage.show', compact('thread', 'messages'));
+		return view('privatemessage::pm.show', compact('thread', 'messages'));
 	}
+
+	public function createThread()
+	{
+		return view('privatemessage::pm.new_thread');
+	}
+
+	public function responseToMessage($threadId)
+	{
+		return view('privatemessage::pm.new_message');
+	}
+
+//
+//	/**
+//	 * Store a newly created resource in storage.
+//	 *
+//	 * @param  Request $request
+//	 * @return Response
+//	 */
+//	public function store(Request $request)
+//	{
+//		$this->thread->create($request->all());
+//
+//		Flash::success(trans('privatemessage::threads.messages.thread created'));
+//
+//		return redirect()->route('admin.privatemessage.thread.index');
+//	}
+//
+//	/**
+//	 * Remove the specified resource from storage.
+//	 *
+//	 * @param  Message $message
+//	 * @return Response
+//	 */
+//	public function destroy(Message $message)
+//	{
+//		$this->message->destroy($message);
+//
+//		Flash::success(trans('privatemessage::messages.messages.message deleted'));
+//
+//		return redirect()->route('admin.privatemessage.message.index');
+//	}
 }

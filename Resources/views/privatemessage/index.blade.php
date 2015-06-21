@@ -14,7 +14,7 @@
             @forelse($threads as $thread)
                 <li>
                     <span class="date">{{ $thread->created_at->format('d-m-Y') }}</span>
-                    <h3><a href="{{ URL::route('privatemessage.show', [$thread->id]) }}">{{ $thread->topic }}</a></h3>
+                    <h3><a href="{{ URL::route($currentLocale . 'privatemessage.show', [$thread->id]) }}">{{ $thread->topic }}</a></h3>
                 </li>
                 <div class="clearfix"></div>
             @else
