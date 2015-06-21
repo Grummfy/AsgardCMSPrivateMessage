@@ -11,4 +11,15 @@ class CacheMessageDecorator extends BaseCacheDecorator implements MessageReposit
         $this->entityName = 'privatemessage.messages';
         $this->repository = $message;
     }
+
+	public function findForUser($userId, $threadId, $limit = 25)
+	{
+		return $this->cache
+			->tags($this->entityName, 'global')
+			->remember("{$this->entityName}.findForUser.{$userId}-{$threadId}-{$limit}", $this->cacheTime,
+				function () use ($userId, $threadId, $limit) {
+					return $this->repository->findForUser($userId, $threadId, $limit);
+				}
+			);
+	}
 }

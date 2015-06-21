@@ -13,24 +13,13 @@ class CacheThreadDecorator extends BaseCacheDecorator implements ThreadRepositor
         $this->repository = $thread;
     }
 
-	public function latest($amount = 3)
+	public function listForUser($userId, $inbox, $limit = 25)
 	{
 		return $this->cache
 			->tags($this->entityName, 'global')
-			->remember("{$this->entityName}.latest.{$amount}", $this->cacheTime,
-				function () use ($amount) {
-					return $this->repository->latest($amount);
-				}
-			);
-	}
-
-	public function listForUser($userId, $inbox, $page = 1, $limit = 25)
-	{
-		return $this->cache
-			->tags($this->entityName, 'global')
-			->remember("{$this->entityName}.listForUser.{$userId}-{$inbox}-{$page}-{$limit}", $this->cacheTime,
-				function () use ($userId, $inbox, $page, $limit) {
-					return $this->repository->listForUser($userId, $inbox, $page, $limit);
+			->remember("{$this->entityName}.listForUser.{$userId}-{$inbox}-{$limit}", $this->cacheTime,
+				function () use ($userId, $inbox, $limit) {
+					return $this->repository->listForUser($userId, $inbox, $limit);
 				}
 			);
 	}
