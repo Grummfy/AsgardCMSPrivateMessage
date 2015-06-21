@@ -4,11 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0b7df9ed06367f6324c72b1191ab3b93",
+    "hash": "df7768fa41bdf4292f86b328ed4e0626",
     "packages": [
         {
             "name": "asgardcms/core-module",
-            "version": "dev-master",
+            "version": "1.0.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
@@ -3187,9 +3187,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "asgardcms/core-module": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
