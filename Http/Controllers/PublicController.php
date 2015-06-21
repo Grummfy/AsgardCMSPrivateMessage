@@ -29,8 +29,7 @@ class PublicController extends BasePublicController
 
 	public function index($inbox = Inbox::TYPE_INBOX)
 	{
-		// TODO
-		$userId = '';
+		$userId = $this->auth->id();
 		$threads = $this->_thread->listForUser($userId, $inbox);
 
 		return view('privatemessage.index', compact('threads'));
@@ -38,8 +37,7 @@ class PublicController extends BasePublicController
 
 	public function show($threadId)
 	{
-		// TODO
-		$userId = '';
+		$userId = $this->auth->id();
 		$thread = $this->_thread->find($threadId);
 		$messages = $this->_message->findForUser($userId, $threadId);
 

@@ -15,7 +15,8 @@
     "autoload-dev": {
         "psr-4": {
             "Modules\\PrivateMessage\\": ".",
-            "Modules\\": "Modules/"
+            "Modules\\": "Modules/",
+            "Grummfy\\AsgardCMS\\": "libs/AsgardCMS/"
         }
     },
     "repositories": [

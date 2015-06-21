@@ -1,8 +1,10 @@
-<?php namespace Modules\PrivateMessage\Repositories\Cache;
+<?php
+
+namespace Modules\PrivateMessage\Repositories\Cache;
 
 use Illuminate\Database\Eloquent\Collection;
 use Modules\PrivateMessage\Repositories\ThreadRepository;
-use Modules\Core\Repositories\Cache\BaseCacheDecorator;
+use Grummfy\AsgardCMS\Repositories\Cache\BaseCacheDecorator;
 
 class CacheThreadDecorator extends BaseCacheDecorator implements ThreadRepository
 {
@@ -15,12 +17,6 @@ class CacheThreadDecorator extends BaseCacheDecorator implements ThreadRepositor
 
 	public function listForUser($userId, $inbox, $limit = 25)
 	{
-		return $this->cache
-			->tags($this->entityName, 'global')
-			->remember("{$this->entityName}.listForUser.{$userId}-{$inbox}-{$limit}", $this->cacheTime,
-				function () use ($userId, $inbox, $limit) {
-					return $this->repository->listForUser($userId, $inbox, $limit);
-				}
-			);
+		return $this->_defaultCache('listForUser', compact('userId', 'inbox', 'limit'), "{$userId}-{$inbox}-{$limit}");
 	}
 }

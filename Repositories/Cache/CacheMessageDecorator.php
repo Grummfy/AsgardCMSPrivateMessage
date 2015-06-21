@@ -1,7 +1,9 @@
-<?php namespace Modules\PrivateMessage\Repositories\Cache;
+<?php
 
+namespace Modules\PrivateMessage\Repositories\Cache;
+
+use Grummfy\AsgardCMS\Repositories\Cache\BaseCacheDecorator;
 use Modules\PrivateMessage\Repositories\MessageRepository;
-use Modules\Core\Repositories\Cache\BaseCacheDecorator;
 
 class CacheMessageDecorator extends BaseCacheDecorator implements MessageRepository
 {
@@ -14,12 +16,6 @@ class CacheMessageDecorator extends BaseCacheDecorator implements MessageReposit
 
 	public function findForUser($userId, $threadId, $limit = 25)
 	{
-		return $this->cache
-			->tags($this->entityName, 'global')
-			->remember("{$this->entityName}.findForUser.{$userId}-{$threadId}-{$limit}", $this->cacheTime,
-				function () use ($userId, $threadId, $limit) {
-					return $this->repository->findForUser($userId, $threadId, $limit);
-				}
-			);
+		return $this->_defaultCache('findForUser', compact('userId', 'threadId', 'limit'), "{$userId}-{$threadId}-{$limit}");
 	}
 }
