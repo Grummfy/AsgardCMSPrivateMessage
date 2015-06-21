@@ -1,6 +1,7 @@
 {
     "name": "grummfy/acms-privatemessage",
     "description": "Private Messaging for asgard CMS",
+    "keywords": ["private message", "asgardcms"],
     "type": "asgard-module",
     "license" : "MIT",
     "require": {
