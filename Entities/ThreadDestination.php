@@ -17,7 +17,8 @@ class ThreadDestination extends Model
 
 	public function receivers()
 	{
-		return $this->hasMany('Modules\User\Entities\Sentry\User', 'receiver_id');
+		$userDriver = config('asgard.user.users.driver');
+		return $this->hasMany('Modules\User\Entities\\' . $userDriver . '\\User', 'receiver_id');
 	}
 
 	public function receiversGroup()
