@@ -8,6 +8,7 @@
         "php": ">=5.4",
         "composer/installers": "~1.0",
         "asgardcms/core-module": "~1.0",
+        "asgardcms/user-module": "~1.0",
         "grummfy/web-interface": "~0.0"
     },
     "require-dev": {

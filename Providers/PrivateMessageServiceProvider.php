@@ -37,6 +37,19 @@ class PrivateMessageServiceProvider extends ServiceProvider
         return array();
     }
 
+	public function boot()
+	{
+		// on publish duplicates files from views to main  project
+		$this->publishes([
+			__DIR__.'/../Resources/views/' => base_path('resources/views/asgard/private-message'),
+		]);
+
+		// if file are defined, override it
+		$this->loadViewsFrom(base_path('resources/views/asgard/private-message'), 'private-message');
+		// otherwise load the file
+		$this->loadViewsFrom(__DIR__.'/../Resources/views', 'private-message');
+	}
+
     private function registerBindings()
     {
         $this->app->bind(
