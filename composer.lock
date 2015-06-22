@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "asgardcms/core-module",
-            "version": "1.0.8",
+            "version": "1.0.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AsgardCms/Core.git",
-                "reference": "763baa7a73a9314fabff84ccaae4714f38270e42"
+                "reference": "1d6bf57a60c6a0c3640112082817081e7d0bbdd7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/763baa7a73a9314fabff84ccaae4714f38270e42",
-                "reference": "763baa7a73a9314fabff84ccaae4714f38270e42",
+                "url": "https://api.github.com/repos/AsgardCms/Core/zipball/1d6bf57a60c6a0c3640112082817081e7d0bbdd7",
+                "reference": "1d6bf57a60c6a0c3640112082817081e7d0bbdd7",
                 "shasum": ""
             },
             "require": {
@@ -54,7 +54,7 @@
                 "asgardcms",
                 "core"
             ],
-            "time": "2015-06-21 19:01:51"
+            "time": "2015-06-22 15:03:21"
         },
         {
             "name": "classpreloader/classpreloader",
@@ -1645,16 +1645,16 @@
         },
         {
             "name": "maatwebsite/laravel-sidebar",
-            "version": "2.0.2",
+            "version": "2.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Maatwebsite/Laravel-Sidebar.git",
-                "reference": "a3e685f98b936b7cc8026937c020b3010ecb27ec"
+                "reference": "6c3e721d4750314b182259785e1199dbbf391d53"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Sidebar/zipball/a3e685f98b936b7cc8026937c020b3010ecb27ec",
-                "reference": "a3e685f98b936b7cc8026937c020b3010ecb27ec",
+                "url": "https://api.github.com/repos/Maatwebsite/Laravel-Sidebar/zipball/6c3e721d4750314b182259785e1199dbbf391d53",
+                "reference": "6c3e721d4750314b182259785e1199dbbf391d53",
                 "shasum": ""
             },
             "require": {
@@ -1693,7 +1693,7 @@
                 "menu",
                 "sidebar"
             ],
-            "time": "2015-06-21 18:43:10"
+            "time": "2015-06-22 11:43:25"
         },
         {
             "name": "mcamara/laravel-localization",
