@@ -1,4 +1,6 @@
-<?php namespace Modules\PrivateMessage\Repositories\Eloquent;
+<?php
+
+namespace Modules\PrivateMessage\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Collection;
 use Modules\PrivateMessage\Entities\Inbox;
@@ -23,6 +25,7 @@ class EloquentThreadRepository extends EloquentBaseRepository implements ThreadR
 				$q->where('user_id', $userId);
 			})
 			->orderBy('created_at', 'desc')
+			->with('messages')
 			->simplePaginate($limit);
 	}
 

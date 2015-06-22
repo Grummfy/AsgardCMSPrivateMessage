@@ -1,4 +1,6 @@
-<?php namespace Modules\PrivateMessage\Repositories\Eloquent;
+<?php
+
+namespace Modules\PrivateMessage\Repositories\Eloquent;
 
 use Modules\PrivateMessage\Entities\Message;
 use Modules\PrivateMessage\Repositories\MessageRepository;

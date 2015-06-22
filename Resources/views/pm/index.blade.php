@@ -17,12 +17,11 @@
             </h1>
         </div>
         <div class="panel-body">
-
             <div class="list-group">
             @forelse($threads as $thread)
                 <a class="list-group-item" href="{{ URL::route('privatemessage.show', ['threadId' => $thread->id]) }}">
                     <h4>{{ $thread->topic }}</h4>
-                    <span class="badge">{{ $thread->cptMessages ?: 0 }}</span>
+                    <span class="badge">{{ count($thread->messages ?: 0) }}</span>
                     <span class="date">{{ $thread->created_at->format('d-m-Y') }}</span>
                 </a>
             @empty
