@@ -1,6 +1,12 @@
 <?php namespace Modules\PrivateMessage\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Modules\PrivateMessage\Entities\Message;
+use Modules\PrivateMessage\Entities\Thread;
+use Modules\PrivateMessage\Repositories\Cache\CacheMessageDecorator;
+use Modules\PrivateMessage\Repositories\Cache\CacheThreadDecorator;
+use Modules\PrivateMessage\Repositories\Eloquent\EloquentMessageRepository;
+use Modules\PrivateMessage\Repositories\Eloquent\EloquentThreadRepository;
 
 class PrivateMessageServiceProvider extends ServiceProvider
 {
@@ -36,29 +42,27 @@ class PrivateMessageServiceProvider extends ServiceProvider
         $this->app->bind(
             'Modules\PrivateMessage\Repositories\MessageRepository',
             function () {
-                $repository = new \Modules\PrivateMessage\Repositories\Eloquent\EloquentMessageRepository(new \Modules\PrivateMessage\Entities\Message());
+                $repository = new EloquentMessageRepository(new Message());
 
                 if (! config('app.cache')) {
                     return $repository;
                 }
 
-                return new \Modules\PrivateMessage\Repositories\Cache\CacheMessageDecorator($repository);
+                return new CacheMessageDecorator($repository);
             }
         );
+
         $this->app->bind(
             'Modules\PrivateMessage\Repositories\ThreadRepository',
             function () {
-                $repository = new \Modules\PrivateMessage\Repositories\Eloquent\EloquentThreadRepository(new \Modules\PrivateMessage\Entities\Thread());
+                $repository = new EloquentThreadRepository(new Thread());
 
                 if (! config('app.cache')) {
                     return $repository;
                 }
 
-                return new \Modules\PrivateMessage\Repositories\Cache\CacheThreadDecorator($repository);
+                return new CacheThreadDecorator($repository);
             }
         );
-// add bindings
-
-
     }
 }
