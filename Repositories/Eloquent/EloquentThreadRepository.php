@@ -12,19 +12,18 @@ class EloquentThreadRepository extends EloquentBaseRepository implements ThreadR
 	{
 		return $this->model
 			->where('inbox', $inbox)
-			->where('user_id', $userId)
+			->where('creator_id', $userId)
 			->orwhereHas('destinations', function($q) use ($userId)
 			{
 				$q->where('receiver_id', $userId);
 			})
-			/// todo this smells bad, change to something better
+			// todo this smells bad, change to something better
 			->orWhereHas('receiversGroup.users', function($q) use ($userId)
 			{
 				$q->where('user_id', $userId);
 			})
 			->orderBy('created_at', 'desc')
-			->simplePaginate($limit)
-			->get();
+			->simplePaginate($limit);
 	}
 
 	public function find($threadId)

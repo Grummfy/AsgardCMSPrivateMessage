@@ -4,7 +4,9 @@ use Illuminate\Routing\Router;
 
 $router->group(['prefix' => 'privatemessage'], function(Router $router)
 {
-    $locale = LaravelLocalization::setLocale() ?: App::getLocale();
-    $router->get('box/{inbox?}', ['as' => $locale . '.privatemessage', 'uses' => 'PublicController@index']);
-    $router->get('/{threadId}', ['as' => $locale . '.privatemessage.show', 'uses' => 'PublicController@show']);
+    $router->get('box/{inbox?}', ['as' => 'privatemessage', 'uses' => 'PublicController@index']);
+
+	$router->get('/new', ['as' => 'privatemessage.new', 'uses' => 'PublicController@createThread']);
+
+	$router->get('/{threadId}', ['as' => 'privatemessage.show', 'uses' => 'PublicController@show']);
 });

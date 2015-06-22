@@ -7,26 +7,30 @@
 @section('content')
     <div class="panel panel-primary">
         <div class="panel-heading">
+            <span class="label label-default pull-right">
+                <a title="{{{ \Lang::get('privatemessage::view.pm-bar.create-thread') }}}" href="{{ URL::route('privatemessage.new') }}">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                </a>
+            </span>
             <h1 class="panel-title">
                 {{{ \Lang::get('privatemessage::view.index.mainTitle') }}}
             </h1>
         </div>
         <div class="panel-body">
-        @if (isset($threads))
+
             <div class="list-group">
             @forelse($threads as $thread)
-                <a class="list-group-item" href="{{ URL::route($currentLocale . 'privatemessage.show', [$thread->id]) }}">
+                <a class="list-group-item" href="{{ URL::route('privatemessage.show', ['threadId' => $thread->id]) }}">
                     <h4>{{ $thread->topic }}</h4>
                     <span class="badge">{{ $thread->cptMessages ?: 0 }}</span>
                     <span class="date">{{ $thread->created_at->format('d-m-Y') }}</span>
                 </a>
-            @else
+            @empty
                 <a class="list-group-item list-group-item-info" href="#">
                     {{{ \Lang::get('privatemessage::view.index.no-thread') }}}
                 </a>
             @endforelse
             </div>
-        @endif
         </div>
     </div>
 @stop

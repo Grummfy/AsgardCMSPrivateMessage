@@ -11,33 +11,45 @@
                 {{{ $thread->topic }}}
             </h1>
             <span class="linkBack">
-                <a href="{{ URL::route($currentLocale . '.privatemessage', ['inbox' => $thread->inbox]) }}">
+                <a href="{{ URL::route('privatemessage', ['inbox' => $thread->inbox]) }}">
                     <i class="glyphicon glyphicon-chevron-left"></i>
                     {{{ \Lang::get('privatemessage::view.show.back-to-list') }}}
                 </a>
             </span>
         </div>
         <div class="panel-body">
+
+            @yield('pm-action-bar')
+
             <ul class="list-group">
+
             @foreach($messages as $message)
                 <li>
-                    <span class="date">{{ $message->created_at->format('d-m-Y') }}</span>
-                    {{--Authior--}}
-                    {!! $message->message !!}
+                    <div class="pull-right">
+                        <span class="date">{{ $message->created_at->format('d-m-Y') }}</span>
+                        <div class="pull-right">
+                            <img src="{{ $message->author->present()->gravatar() }}" class="img-circle" alt="User Image" />
+                            <br />
+                            {{{ $message->author->present()->fullname }}}
+                        </div>
+                    </div>
+
+                    {!! $message->message !!} {{-- TODO format the output with $message->format --}}
                 </li>
             @endforeach
+                <li>
+                    TODO form to answer
+                </li>
             </ul>
+{{-- TODO manage pagiantion (or autoload throught js) --}}
         </div>
         <div class="panel-footer">
             <span class="linkBack">
-                <a href="{{ URL::route($currentLocale . '.privatemessage', ['inbox' => $thread->inbox]) }}">
+                <a href="{{ URL::route('privatemessage', ['inbox' => $thread->inbox]) }}">
                     <i class="glyphicon glyphicon-chevron-left"></i>
                     {{{ \Lang::get('privatemessage::view.show.back-to-list') }}}
                 </a>
             </span>
         </div>
     </div>
-
-
-
 @stop

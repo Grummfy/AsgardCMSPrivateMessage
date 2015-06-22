@@ -18,7 +18,8 @@ class Message extends Model implements MessageInterface
 
 	public function author()
 	{
-		return $this->hasOne('Modules\User\Entities\Sentry\User', 'author_id');
+		$userDriver = config('asgard.user.users.driver');
+		return $this->hasOne('Modules\\User\\Entities\\' . $userDriver . '\\User', 'id', 'author_id');
 	}
 
 	public function getMetaData()

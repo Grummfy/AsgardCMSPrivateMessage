@@ -49,11 +49,6 @@ class PublicController extends BasePublicController
 		return view('private-message::pm.new_thread');
 	}
 
-	public function responseToMessage($threadId)
-	{
-		return view('private-message::pm.new_message');
-	}
-
 //
 //	/**
 //	 * Store a newly created resource in storage.

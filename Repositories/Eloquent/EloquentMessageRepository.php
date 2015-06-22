@@ -11,9 +11,8 @@ class EloquentMessageRepository extends EloquentBaseRepository implements Messag
 		return $this->model
 			->with('author')
 			->where('thread_id', $threadId)
-			->where('user_id', $userId)
+			->where('author_id', $userId)
 			->orderBy('created_at', 'desc')
-			->simplePaginate($limit)
-			->get();
+			->simplePaginate($limit);
 	}
 }

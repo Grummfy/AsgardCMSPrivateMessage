@@ -24,12 +24,13 @@ class Thread extends Model implements ThreadInterface
 
 	public function receivers()
 	{
-		return $this->hasManyThrough('Modules\User\Entities\Sentry\User', 'Modules\PrivateMessage\Entities\ThreadDestination', 'receiver_id');
+		$userDriver = config('asgard.user.users.driver');
+		return $this->hasManyThrough('Modules\\User\\Entities\\' . $userDriver . '\\User', 'Modules\PrivateMessage\Entities\ThreadDestination', 'receiver_id', 'id');
 	}
 
 	public function receiversGroup()
 	{
-		return $this->hasManyThrough('Cartalyst\Sentry\Groups\Eloquent\Group', 'Modules\PrivateMessage\Entities\ThreadDestination', 'receivers_id');
+		return $this->hasManyThrough('Cartalyst\Sentry\Groups\Eloquent\Group', 'Modules\PrivateMessage\Entities\ThreadDestination', 'receivers_id', 'id');
 	}
 
 	/**
