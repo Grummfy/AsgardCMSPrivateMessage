@@ -5,25 +5,39 @@
 @stop
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">
+                {{{ $thread->topic }}}
+            </h1>
             <span class="linkBack">
-                <a href="{{ URL::route($currentLocale . '.privatemessage') }}">
+                <a href="{{ URL::route($currentLocale . '.privatemessage', ['inbox' => $thread->inbox]) }}">
                     <i class="glyphicon glyphicon-chevron-left"></i>
                     {{{ \Lang::get('privatemessage::view.show.back-to-list') }}}
                 </a>
             </span>
-            <h1>{{ $thread->title }}</h1>
+        </div>
+        <div class="panel-body">
+            <ul class="list-group">
             @foreach($messages as $message)
-
                 <li>
                     <span class="date">{{ $message->created_at->format('d-m-Y') }}</span>
-                    <h3>from message</h3>
+                    {{--Authior--}}
                     {!! $message->message !!}
                 </li>
-                <div class="clearfix"></div>
-
             @endforeach
+            </ul>
+        </div>
+        <div class="panel-footer">
+            <span class="linkBack">
+                <a href="{{ URL::route($currentLocale . '.privatemessage', ['inbox' => $thread->inbox]) }}">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                    {{{ \Lang::get('privatemessage::view.show.back-to-list') }}}
+                </a>
+            </span>
         </div>
     </div>
+
+
+
 @stop

@@ -1,7 +1,7 @@
 {
     "name": "PrivateMessage",
     "alias": "privatemessage",
-    "description": "",
+    "description": "Give teh possibility to have private messaging inside the cms",
     "keywords": [],
     "version": "v0.0.1",
     "active": 1,

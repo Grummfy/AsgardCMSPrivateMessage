@@ -5,26 +5,28 @@
 @stop
 
 @section('content')
-    <div class="row">
-        <div class="col-md-12">
-            <h1>{{{ \Lang::get('privatemessage::view.index.mainTitle') }}}</h1>
-            {{-- TODO tab for inbox type --}}
-            @if (isset($threads))
-            <ul>
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">
+                {{{ \Lang::get('privatemessage::view.index.mainTitle') }}}
+            </h1>
+        </div>
+        <div class="panel-body">
+        @if (isset($threads))
+            <div class="list-group">
             @forelse($threads as $thread)
-                <li>
+                <a class="list-group-item" href="{{ URL::route($currentLocale . 'privatemessage.show', [$thread->id]) }}">
+                    <h4>{{ $thread->topic }}</h4>
+                    <span class="badge">{{ $thread->cptMessages ?: 0 }}</span>
                     <span class="date">{{ $thread->created_at->format('d-m-Y') }}</span>
-                    <h3><a href="{{ URL::route($currentLocale . 'privatemessage.show', [$thread->id]) }}">{{ $thread->topic }}</a></h3>
-                </li>
-                <div class="clearfix"></div>
+                </a>
             @else
-                <li>
+                <a class="list-group-item list-group-item-info" href="#">
                     {{{ \Lang::get('privatemessage::view.index.no-thread') }}}
-                </li>
-                <div class="clearfix"></div>
+                </a>
             @endforelse
-            </ul>
-            @endif
+            </div>
+        @endif
         </div>
     </div>
 @stop
