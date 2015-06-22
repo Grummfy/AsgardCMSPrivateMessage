@@ -13,6 +13,6 @@ class Author extends AbstractModelWrapper implements \WebInterface\Models\Common
 
 	public function getDisplayableName()
 	{
-		return $this->model->first_name . ' ' . $this->model->last_name;
+		return $this->_model->first_name . ' ' . $this->_model->last_name;
 	}
 }
